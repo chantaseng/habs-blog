@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div className="flex justify-between items-center max-w-7xl mx-auto py-6 px-8 border-b-[1px] border-slate-100">
       <div className="flex justify-center items-center">
-        <img src={habs} className="w-12 h-8 mr-2 cursor-pointer" />
+        <img src={habs} className="w-12 h-8 mr-3 cursor-pointer" />
         <h1 className="text-2xl font-bold cursor-pointer text-rose-400">
           Habs Blog
         </h1>
