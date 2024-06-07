@@ -1,9 +1,11 @@
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+
 function App() {
   return (
     <>
-      <div className="text-yellow-500">
-        <h1>yo</h1>
-      </div>
+      <Navbar />
+      <Home />
     </>
   );
 }
