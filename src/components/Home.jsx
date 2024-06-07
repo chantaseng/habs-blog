@@ -1,22 +1,35 @@
+import { useState } from 'react';
+
 const Home = () => {
+  const [blogs, setBlogs] = useState([
+    {
+      title: 'Slavkovsky is set to breakout next season',
+      body: 'lorem ipsum...',
+      author: 'William C.',
+      id: 1,
+    },
+    {
+      title: 'Caufield expected to reach 50 goals next year',
+      body: 'lorem ipsum...',
+      author: 'Khaliun B.',
+      id: 2,
+    },
+    {
+      title: 'Suzuki 80 points next year?',
+      body: 'lorem ipsum...',
+      author: 'Anna S.',
+      id: 3,
+    },
+  ]);
+
   return (
-    <div className="flex flex-col justify-center items-center">
-      <h2>Homepage</h2>
-      <p className="mx-24 my-10 text-3xl">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
-        impedit maiores dolorum nostrum quasi enim quis asperiores odit, sint ea
-        nobis! Porro perspiciatis tenetur recusandae aliquid deserunt culpa
-        perferendis dolor. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Consequatur, voluptate iste doloremque similique, saepe facere
-        unde recusandae quos laboriosam ipsum quas. Ab, corrupti officia vitae
-        ullam fugiat nobis sequi dolores.Lorem ipsum dolor sit amet, consectetur
-        adipisicing elit. Officia impedit maiores dolorum nostrum quasi enim
-        quis asperiores odit, sint ea nobis! Porro perspiciatis tenetur
-        recusandae aliquid deserunt culpa perferendis dolor. Lorem ipsum dolor
-        sit amet consectetur adipisicing elit. Consequatur, voluptate iste
-        doloremque similique, saepe facere unde recusandae quos laboriosam ipsum
-        quas. Ab, corrupti officia vitae ullam fugiat nobis sequi dolores.
-      </p>
+    <div className="max-w-7xl mx-auto py-6 px-8">
+      {blogs.map((blog) => (
+        <div key={blog.id} className="p-4">
+          <h2 className="text-3xl font-bold text-rose-400">{blog.title}</h2>
+          <span>Written by {blog.author}</span>
+        </div>
+      ))}
     </div>
   );
 };
