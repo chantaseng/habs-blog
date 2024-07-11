@@ -1,14 +1,16 @@
 require('dotenv').config();
 
 const express = require('express');
+const blogRoutes = require('./routes/blogRoute');
 
 // express app
 const app = express();
 
+// middleware
+app.use(express.json());
+
 // route
-app.get('/', (req, res) => {
-  res.json({ message: 'welcome to the app' });
-});
+app.use('/api/blogs', blogRoutes);
 
 // listen for request
 app.listen(process.env.PORT, () => {
