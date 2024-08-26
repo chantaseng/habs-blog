@@ -1,29 +1,20 @@
 const express = require('express');
-const Blog = require('../models/blog');
+const {
+  getBlogs,
+  getBlog,
+  createBlog,
+} = require('../controllers/blogController');
 
 const router = express.Router();
 
 // GET all blogs
-router.get('/', (req, res) => {
-  res.json({ message: 'GET all blogs' });
-});
+router.get('/', getBlogs);
 
 // get a single blog
-router.get('/:id', (req, res) => {
-  res.json({ message: 'GET a single blog' });
-});
+router.get('/:id', getBlog);
 
 // create a blog
-router.post('/', async (req, res) => {
-  const { title, body, author } = req.body;
-
-  try {
-    const blog = await Blog.create({ title, body, author });
-    res.status(200).json(blog);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
+router.post('/', createBlog);
 
 // delete a blog
 router.delete('/:id', (req, res) => {
