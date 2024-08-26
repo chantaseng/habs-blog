@@ -39,11 +39,43 @@ const createBlog = async (req, res) => {
 };
 
 //  delete a blog
+const deleteBlog = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: 'This blog does not exist' });
+  }
+
+  const blog = await Blog.findOneAndDelete({ _id: id });
+
+  if (!blog) {
+    return res.status(400).json({ error: 'This blog does not exist' });
+  }
+
+  res.status(200).json(blog);
+};
 
 // update a blog
+const updateBlog = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: 'This blog doesn not exist' });
+  }
+
+  const blog = await Blog.findOneAndUpdate({ _id: id }, { ...req.body });
+
+  if (!blog) {
+    return res.status(400).json({ error: 'This blog does not exist' });
+  }
+
+  res.status(200).json(blog);
+};
 
 module.exports = {
   getBlogs,
   getBlog,
   createBlog,
+  deleteBlog,
+  updateBlog,
 };
